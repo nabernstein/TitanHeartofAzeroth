@@ -1,0 +1,10 @@
+## Interface: 80000
+## Title: Titan Panel [|cffe6cc80Heart of Azeroth|r]
+## Notes: Titan Panel plugin that shows your Heart of Azeroth info.
+## Author: Skolyr
+## Version: v1.0.0
+## Dependencies: Titan
+
+Locales.lua
+Elib-2.4.lua
+TitanHeartofAzeroth.lua
