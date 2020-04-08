@@ -1,4 +1,4 @@
-## Interface: 80000
+## Interface: 80300
 ## Title: Titan Panel [|cffe6cc80Heart of Azeroth|r]
 ## Notes: Titan Panel plugin that shows your Heart of Azeroth info.
 ## Author: Skolyr
