@@ -16,11 +16,39 @@ Color.ARTIFACT = "|cffe6cc80"
 local exists = false;
 local heart_max = 0;
 local session_ap = 0;
+local remaining_ap = 0;
+
+local function abbreviateNumber(number)
+	local temp = 0
+	if (number < 1000) then
+		return number
+	elseif (number < 1000000) then
+		temp = number / 1000
+		temp = temp - (temp % 0.1)
+		return temp .. " K"
+	else
+		temp = number / 1000000
+		temp = temp - (temp % 0.1)
+		return temp .. " M"
+    end
+end
+
+local function comma_value(amount)
+	local formatted = amount
+	while true do  
+	  formatted, k = string.gsub(formatted, "^(-?%d+)(%d%d%d)", '%1,%2')
+	  if (k==0) then
+		break
+	  end
+	end
+	return formatted
+end
 
 local function GetAzeriteInformation(location)
 	local level = C_AzeriteItem.GetPowerLevel(location)
 	local current, next_level = C_AzeriteItem.GetAzeriteItemXPInfo(location)
 	heart_max = next_level;
+	remaining_ap = next_level - current;
 	return level, current, next_level
 end
 
@@ -55,6 +83,18 @@ local function GetButtonText(self, id)
 	local showLevel = TitanGetVar(id, "ShowLevel")
 	local showCurrent = TitanGetVar(id, "ShowCurrent")
 	local showPercent = TitanGetVar(id, "ShowPercent")
+	local abbreviate = TitanGetVar(id, "Abbreviate")
+
+	local percent = (current / next_level) * 100
+
+
+	if (abbreviate) then
+		current = abbreviateNumber(current)
+		next_level = abbreviateNumber(next_level)
+	else		
+		current = comma_value(current)
+		next_level = comma_value(next_level)
+	end
 	
 	if (showLevel) then
 		text = text .. Color.CYAN .. level .. "|r "
@@ -68,15 +108,13 @@ local function GetButtonText(self, id)
 		text = text .. Color.GREY .. current .. "|r"
 
 		if not hideMax then
-			text = text .. Color.GREY .. "/" .. next_level .. "|r"
+			text = text .. Color.GREY .. " / " .. next_level .. "|r"
 		end
 	end
 	
 	if TitanGetVar(id, "ShowPercent") then
-		local percent = round((current) * 100 / (next_level))
-		if (max == 0) then
-			percent = 100
-		end
+
+		percent = percent - (percent % 0.1)
 
 		if (showCurrent) then
 			text = text .. Color.GREEN .. "  (" .. percent .. "%)|r" 
@@ -96,9 +134,22 @@ local function GetTooltipText(self, id)
 			Color.YELLOW .. "[The Heart of Azeroth]|r "
 	end
 
-	local text = "Current AP for this session: "
+	local azeriteItemLocation = C_AzeriteItem.FindActiveAzeriteItem()
+	local level = 0
+	local current = 0
+	local next_level = 0
 	
-	text = text .. session_ap
+	if (azeriteItemLocation) then
+		exists = true;
+		level, current, next_level = GetAzeriteInformation(azeriteItemLocation)
+	end
+
+	local text = Color.ARTIFACT .. "AP needed for level " .. (level+1) .. ": |r"
+	text = text .. Color.WHITE .. comma_value(next_level - current) .. "|r\n"
+
+	text = text .. Color.ARTIFACT .. "AP gained this session: |r"	
+	text = text .. Color.WHITE .. session_ap .. "|r"
+
 	
 	return text
 end
@@ -134,6 +185,7 @@ end
 
 local menus = {
 	{ type = "space" },
+	{ type = "toggle", text = L["Abbreviate"], var = "Abbreviate", def = true, keepShown = true },
 	{ type = "toggle", text = L["ShowLevel"], var = "ShowLevel", def = true, keepShown = true },
 	{ type = "toggle", text = L["ShowCurrent"], var = "ShowCurrent", def = true, keepShown = true },
 	{ type = "toggle", text = L["ShowPercent"], var = "ShowPercent", def = true, keepShown = true },
