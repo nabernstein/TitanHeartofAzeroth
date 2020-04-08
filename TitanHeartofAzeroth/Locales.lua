@@ -1,6 +1,7 @@
 local _, L = ...;
 
 L["Heart"] = "Heart of Azeroth"
+L["Abbreviate"] = "Abbreviate numbers"
 L["ShowLevel"] = "Show level"
 L["ShowCurrent"] = "Show current"
 L["ShowPercent"] = "Show percentage"
