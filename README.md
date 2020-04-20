@@ -7,14 +7,7 @@ Unfortunately, school prevented me from having time to play WoW, so I let my sub
 ## Donations
 Due to the current situation with COVID-19, it has become increasingly difficult to launch my career now that I've graduated. If you enjoyed my addon and are able to donate, it would be a huge help and I would greatly appreciate it.
 
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-<input type="hidden" name="cmd" value="_donations" />
-<input type="hidden" name="business" value="95U2SGDQ6A7K6" />
-<input type="hidden" name="item_name" value="TitanPanel: Heart of Azeroth" />
-<input type="hidden" name="currency_code" value="USD" />
-<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
-<img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
-</form>
+[![](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=95U2SGDQ6A7K6&item_name=TitanPanel%3A+Heart+of+Azeroth&currency_code=USD&source=url)
 
 
 ## Description
