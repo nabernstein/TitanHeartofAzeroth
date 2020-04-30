@@ -2,7 +2,7 @@ Titan Panel [Heart of Azeroth]
 ==================
 
 ## A Big Thank You
-Unfortunately, school prevented me from having time to play WoW, so I let my subscription lapse and couldn't update this addon over the last two years. Despite this, it seems that about 48,000 people have downloaded it, which is an astounding number as I am very much an amateur developer and this was my first attempt at an addon. Thank you everyone!  
+Unfortunately, school prevented me from having time to play WoW, so I let my subscription lapse and couldn't update this addon over the last two years. Despite this, it seems that about 29,000 people have downloaded it, which is an astounding number as I am very much an amateur developer and this was my first attempt at an addon. Thank you everyone!  
 
 ## Donations
 Due to the current situation with COVID-19, it has become increasingly difficult to launch my career now that I've graduated. If you enjoyed my addon and are able to donate, it would be a huge help and I would greatly appreciate it.
