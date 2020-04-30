@@ -12,6 +12,17 @@ Color.YELLOW = "|cffffd230"
 Color.GREEN = "|cff3ddc53"
 Color.RED = "|cffe50000"
 Color.ARTIFACT = "|cffe6cc80"
+Color.PROGRESS10 = "|cfffffd23"
+Color.PROGRESS20 = "|cffe9f928"
+Color.PROGRESS30 = "|cffd3f52d"
+Color.PROGRESS40 = "|cffbef233"
+Color.PROGRESS50 = "|cffa8ee38"
+Color.PROGRESS60 = "|cff93ea3d"
+Color.PROGRESS70 = "|cff7de743"
+Color.PROGRESS80 = "|cff68e348"
+Color.PROGRESS90 = "|cff52df4d"
+Color.PROGRESS100 = "|cff3ddc53"
+
 
 local exists = false;
 local heart_max = 0;
@@ -116,10 +127,32 @@ local function GetButtonText(self, id)
 
 		percent = percent - (percent % 0.1)
 
-		if (showCurrent) then
-			text = text .. Color.GREEN .. "  (" .. percent .. "%)|r" 
+		if (percent < 10) then
+			perc_color = Color.PROGRESS10
+		elseif (percent < 20) then
+			perc_color = Color.PROGRESS20
+		elseif (percent < 30) then
+			perc_color = Color.PROGRESS30
+		elseif (percent < 40) then
+			perc_color = Color.PROGRESS40
+		elseif (percent < 50) then
+			perc_color = Color.PROGRESS50
+		elseif (percent < 60) then
+			perc_color = Color.PROGRESS60
+		elseif (percent < 70) then
+			perc_color = Color.PROGRESS70
+		elseif (percent < 80) then
+			perc_color = Color.PROGRESS80
+		elseif (percent < 90) then
+			perc_color = Color.PROGRESS90
 		else
-			text = text .. Color.GREEN .. percent .. "%|r"
+			perc_color = Color.PROGRESS100
+		end
+
+		if (showCurrent) then
+			text = text .. perc_color .. "  (" .. percent .. "%)|r" 
+		else
+			text = text .. perc_color .. percent .. "%|r"
 		end
 		
 	end
